@@ -1,0 +1,35 @@
+# VS Code
+.vscode/
+settings.json
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# Temporary
+*.tmp
+*.temp# VS Code
+.vscode/
+settings.json
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# Temporary
+*.tmp
+*.temp
