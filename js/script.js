@@ -85,59 +85,21 @@ navLinks.forEach(link => {
 });
 
 // ===================================
-// CONTACT FORM SUBMISSION (FORMSPREE)
+// CONTACT FORM - FORMSPREE
 // ===================================
 document.addEventListener("DOMContentLoaded", function() {
     const contactForm = document.getElementById("contact-form");
 
     if (contactForm) {
-        contactForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(contactForm);
-
-            // Get the Formspree action URL
-            const formAction = contactForm.getAttribute('action');
-
-            // Show loading state
+        contactForm.addEventListener("submit", function(e) {
+            // Let Formspree handle the submission naturally
+            // No preventDefault needed!
+            
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-
-            // Send to Formspree
-            fetch(formAction, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Success!
-                    alert('Thank you! Your message has been sent successfully. I will get back to you soon.');
-                    contactForm.reset();
-                } else {
-                    // Error
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            alert('Oops! There was a problem: ' + data.errors.map(error => error.message).join(', '));
-                        } else {
-                            alert('Oops! There was a problem submitting your form. Please try again.');
-                        }
-                    });
-                }
-            })
-            .catch(error => {
-                alert('Oops! There was a problem submitting your form. Please check your internet connection.');
-            })
-            .finally(() => {
-                // Reset button
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
+            if (submitBtn) {
+                submitBtn.textContent = "Sending...";
+                submitBtn.disabled = true;
+            }
         });
     }
 });
